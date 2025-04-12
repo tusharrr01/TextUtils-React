@@ -58,15 +58,23 @@ export default function TextForm(props) {
         props.showAlert("Text Replaced!", "success");
     };
 
-    // const handleEncrypt = () => {
-    //     setText(text.split('').map(char => String.fromCharCode(char.charCodeAt(0) + 5).join('')));
-    //     props.showAlert("Text Encrypted!", "success");
-    // };
-
-    // const handleDecrypt = () => {
-    //     setText(text.split('').map(char => String.fromCharCode(char.charCodeAt(0) - 5).join('')));
-    //     props.showAlert("Text Decrypted!", "success");
-    // };
+    const handleEncrypt = () => {
+            const encrypted = text.split('')
+                .map(char => {const code = char.charCodeAt(0)
+                    return (code >= 32 && code <= 126)?String.fromCharCode(((code - 32 + 5) % 95 + 32)):char;
+                }).join('');       
+            setText(encrypted);
+            props.showAlert("Text Encrypted!", "success");
+    };
+    
+    const handleDecrypt = () => {
+            const decrypted = text.split('')
+                .map(char => {const code = char.charCodeAt(0);
+                    return (code >= 32 && code <= 126)?String.fromCharCode(((code - 32 - 5 + 95) % 95 + 32)):char;
+                }).join('');       
+            setText(decrypted);
+            props.showAlert("Text Decrypted!", "success");    
+    };
 
     const handleSpeak = () => {
         const msg = new SpeechSynthesisUtterance();
@@ -113,7 +121,7 @@ export default function TextForm(props) {
     };
 
     const summarizeText = () => {
-        const sentences = text.match(/[^\.!\?]+[\.!\?]+/g) || [];
+        const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
         if (sentences.length > 0) {
             setText(sentences.slice(0, Math.ceil(sentences.length / 3)).join(' '));
             props.showAlert("Text Summarized!", "success");
@@ -165,8 +173,8 @@ export default function TextForm(props) {
                     <button disabled={!text} className="btn btn-danger mx-1 my-1" onClick={handleClearClick}>Clear Text</button>
                 </div>
                 <div className="btn-group mb-3" role="group">
-                    {/* <button disabled={!text} className="btn btn-warning mx-1 my-1" onClick={handleEncrypt}>Encrypt</button>
-                    <button disabled={!text} className="btn btn-warning mx-1 my-1" onClick={handleDecrypt}>Decrypt</button> */}
+                    <button disabled={!text} className="btn btn-warning mx-1 my-1" onClick={handleEncrypt}>Encrypt</button>
+                    <button disabled={!text} className="btn btn-warning mx-1 my-1" onClick={handleDecrypt}>Decrypt</button>
                     <button disabled={!text} className="btn btn-warning mx-1 my-1" onClick={handleSpeak}>Speak</button>
                     <button disabled={!text} className="btn btn-warning mx-1 my-1" onClick={handleDownload}>Download</button>
                     <button className="btn btn-warning mx-1 my-1" onClick={generatePassword}>Generate Password</button>

@@ -32,7 +32,7 @@ A lightweight React application for text manipulation with various useful utilit
   - Clear text completely
 ### ⚡ Bonus Utilities
 - **Special Functions**:
-  - Text encryption/decryption (Soon)
+  - Text encryption/decryption
   - Password generator
   - JSON formatter/validator
   - Basic text summarization
