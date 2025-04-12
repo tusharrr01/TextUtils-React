@@ -7,7 +7,7 @@
 A lightweight React application for text manipulation with various useful utilities.
 <p>TextUtils-React is a handy web application built with React.js that provides various text manipulation tools. It allows users to modify their text in multiple ways, such as converting case, removing extra spaces, copying to clipboard, and more—all in a clean, user-friendly interface.</p>
 
-![Preview](demo.jpg)
+![Preview](img\demo.jpg)
 
 ## ✨ Features
 
