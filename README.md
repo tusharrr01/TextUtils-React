@@ -9,6 +9,8 @@ A lightweight React application for text manipulation with various useful utilit
 
 ![Preview](img/demo.jpg)
 
+## ✨ [Demo](https://textutils-react-tawny.vercel.app/)
+
 ## ✨ Features
 
 ### 📊 Text Analysis
